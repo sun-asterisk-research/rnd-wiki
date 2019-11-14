@@ -1,0 +1,15 @@
+#!/bin/bash
+
+mv LocalSettings.php LocalSettings.php.tmp
+
+php maintenance/install.php $@ \
+    --dbtype ${wgDBtype:-mysql} \
+    --dbserver ${wgDBserver:-mysql} \
+    --dbname ${wgDBname:-sun_rnd_wiki} \
+    --dbuser ${wgDBuser:-sun_rnd_wiki} \
+    --dbpass $wgDBpassword
+
+rm LocalSettings.php
+mv LocalSettings.php.tmp LocalSettings.php
+
+php maintenance/update.php --quick
