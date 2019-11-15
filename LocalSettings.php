@@ -139,7 +139,7 @@ wfLoadSkin('Vector');
 //Enabled extensions
 wfLoadExtension('CiteThisPage');
 
-// Google Login
+// GoogleLogin
 wfLoadExtension('GoogleLogin');
 
 $wgGLAppId = null;
@@ -149,6 +149,11 @@ $wgGroupPermissions['sysop']['Managegooglelogindomains'] = true ;
 $wgGLAuthoritativeMode = true;
 $wgGLAllowedDomains = ['sun-asterisk.com'];
 $wgGLAllowedDomainsStrict = true;
+
+// WikiEditor
+wfLoadExtension('WikiEditor');
+
+$wgHiddenPrefs[] = 'usebetatoolbar';
 
 // Load settings from env variables
 foreach ($_ENV as $env => $value) {

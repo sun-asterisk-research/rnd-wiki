@@ -8,11 +8,14 @@ RUN apt-get update \
 # Install composer
 RUN curl -sSo /usr/local/bin/composer https://getcomposer.org/composer.phar && chmod +x /usr/local/bin/composer
 
-# Install GoogleLogin extension
-ARG GOOGLE_LOGIN_DOWNLOAD_URL=https://extdist.wmflabs.org/dist/extensions/GoogleLogin-REL1_33-31ece02.tar.gz
-
-RUN curl -sS ${GOOGLE_LOGIN_DOWNLOAD_URL} | tar -xzC extensions \
+# Install extensions
+ARG GOOGLE_LOGIN_RELEASE_URL=https://extdist.wmflabs.org/dist/extensions/GoogleLogin-REL1_33-31ece02.tar.gz
+RUN curl -sS ${GOOGLE_LOGIN_RELEASE_URL} | tar -xzC extensions \
     && composer install --no-dev -d extensions/GoogleLogin
+
+ARG WIKI_EDITOR_RELEASE_URL=https://extdist.wmflabs.org/dist/extensions/WikiEditor-REL1_33-e051a4b.tar.gz
+RUN curl -sS ${WIKI_EDITOR_RELEASE_URL} | tar -xzC extensions \
+    && composer install --no-dev -d extensions/WikiEditor
 
 COPY GoogleLogin/ extensions/GoogleLogin/
 COPY images/ resources/assets/
