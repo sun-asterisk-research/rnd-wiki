@@ -138,6 +138,10 @@ wfLoadSkin('Vector');
 
 //Enabled extensions
 wfLoadExtension('CiteThisPage');
+wfLoadExtension('Renameuser');
+wfLoadExtension('MultimediaViewer');
+wfLoadExtension('TextExtracts');
+wfLoadExtension('PageImages');
 
 // GoogleLogin
 wfLoadExtension('GoogleLogin');
@@ -154,6 +158,12 @@ $wgGLAllowedDomainsStrict = true;
 wfLoadExtension('WikiEditor');
 
 $wgHiddenPrefs[] = 'usebetatoolbar';
+
+// More extensions
+wfLoadExtension('Popups');
+wfLoadExtension('PagesList');
+wfLoadExtension('NewestPages');
+wfLoadExtension('CommonsMetadata');
 
 // Load settings from env variables
 foreach ($_ENV as $env => $value) {

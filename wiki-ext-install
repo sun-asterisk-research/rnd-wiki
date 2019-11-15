@@ -1,0 +1,27 @@
+#!/bin/bash
+
+set -e
+
+info() {
+    echo -e "\033[00;32m$@\033[0m"
+}
+
+tarball=/tmp/wiki-ext.tar.gz
+
+info "Downloading from $1"
+curl -sSo $tarball $1
+
+dir=$(tar tf $tarball | head -1 | cut -f1 -d'/')
+ext_name=$(echo $dir | awk -F '[^a-zA-Z]' '{print $1}')
+
+info "Installing extension $ext_name"
+tar xzf $tarball -C extensions
+if [ $dir != $ext_name ]; then
+    mv "extensions/$dir" "extensions/$ext_name"
+fi
+
+if [ -f "extensions/$dir/composer.json" ]; then
+    composer install --no-dev -d extensions/$ext_name
+fi
+rm $tarball
+info "Done"
