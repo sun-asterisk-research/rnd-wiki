@@ -18,3 +18,5 @@ COPY GoogleLogin/ extensions/GoogleLogin/
 COPY images/ resources/assets/
 COPY LocalSettings.php .
 COPY wiki-install /usr/local/bin
+
+ENV TZ=Asia/Ho_Chi_Minh
