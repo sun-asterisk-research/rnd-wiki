@@ -159,9 +159,17 @@ wfLoadExtension('WikiEditor');
 
 $wgHiddenPrefs[] = 'usebetatoolbar';
 
+// PagesList
+require_once "$IP/extensions/PagesList/PagesList.php";
+
+$wgPagesListShowLastUser = true;
+$wgPagesListShowLastModification = true;
+$wgPagesListDataTablesOptions = [
+	'iDisplayLength' => 20,
+];
+
 // More extensions
 wfLoadExtension('Popups');
-wfLoadExtension('PagesList');
 wfLoadExtension('NewestPages');
 wfLoadExtension('CommonsMetadata');
 
