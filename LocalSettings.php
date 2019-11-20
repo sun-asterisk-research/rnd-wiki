@@ -5,8 +5,6 @@ if (!defined('MEDIAWIKI'))  {
 	exit;
 }
 
-$wgDisableOutputCompression = false;
-
 $wgSitename = 'Sun* R&D Wiki';
 $wgMetaNamespace = 'Sun*_R&D_Wiki';
 
@@ -63,7 +61,11 @@ $wgDBTableOptions = "ENGINE=InnoDB, DEFAULT CHARSET=binary";
 
 // Shared memory settings
 $wgMainCacheType = CACHE_ACCEL;
+$wgSessionCacheType = CACHE_DB;
+
 $wgMemCachedServers = [];
+
+$wgDisableOutputCompression = false;
 
 /**
  * To enable image uploads, make sure the 'images' directory
@@ -136,7 +138,7 @@ wfLoadSkin('MonoBook');
 wfLoadSkin('Timeless');
 wfLoadSkin('Vector');
 
-//Enabled extensions
+//Enabled built-in extensions
 wfLoadExtension('CiteThisPage');
 wfLoadExtension('Renameuser');
 wfLoadExtension('MultimediaViewer');
@@ -168,8 +170,13 @@ $wgPagesListDataTablesOptions = [
 	'iDisplayLength' => 20,
 ];
 
-// More extensions
+// Popup previews
 wfLoadExtension('Popups');
+
+$wgPopupsHideOptInOnPreferencesPage = true;
+$wgPopupsOptInDefaultState = '1';
+
+// More extensions
 wfLoadExtension('NewestPages');
 wfLoadExtension('CommonsMetadata');
 
