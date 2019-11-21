@@ -177,8 +177,9 @@ $wgPopupsHideOptInOnPreferencesPage = true;
 $wgPopupsOptInDefaultState = '1';
 
 // More extensions
-wfLoadExtension('NewestPages');
 wfLoadExtension('CommonsMetadata');
+wfLoadExtension('NewestPages');
+wfLoadExtension('EmbedVideo');
 
 // Load settings from env variables
 foreach ($_ENV as $env => $value) {
