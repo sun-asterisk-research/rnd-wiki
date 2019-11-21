@@ -63,6 +63,8 @@ $wgDBTableOptions = "ENGINE=InnoDB, DEFAULT CHARSET=binary";
 $wgMainCacheType = CACHE_ACCEL;
 $wgSessionCacheType = CACHE_DB;
 
+$wgObjectCacheSessionExpiry = 30 * 86400;
+
 $wgMemCachedServers = [];
 
 $wgDisableOutputCompression = false;
