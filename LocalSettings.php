@@ -2,7 +2,7 @@
 
 // Protect against web entry
 if (!defined('MEDIAWIKI'))  {
-	exit;
+    exit;
 }
 
 $wgSitename = 'Sun* R&D Wiki';
@@ -27,7 +27,7 @@ $wgResourceBasePath = $wgScriptPath;
 // or else you'll overwrite your logo when you upgrade!
 $wgLogo = "$wgStylePath/resources/assets/wiki.png";
 $wgLogoHD = [
-	'2x' => "$wgStylePath/resources/assets/wiki_2x.png",
+    '2x' => "$wgStylePath/resources/assets/wiki_2x.png",
 ];
 
 $wgFavicon = "$wgScriptPath/resources/assets/favicon.ico";
@@ -116,9 +116,9 @@ $wgRightsText = null;
 $wgRightsIcon = null;
 
 $wgWhitelistRead = [
-	'Special:CreateAccount',
-	'Special:UserLogin',
-	'Special:GoogleLoginReturn',
+    'Special:CreateAccount',
+    'Special:UserLogin',
+    'Special:GoogleLoginReturn',
 ];
 
 // Disable exception stack trace
@@ -169,7 +169,7 @@ require_once "$IP/extensions/PagesList/PagesList.php";
 $wgPagesListShowLastUser = true;
 $wgPagesListShowLastModification = true;
 $wgPagesListDataTablesOptions = [
-	'iDisplayLength' => 20,
+    'iDisplayLength' => 20,
 ];
 
 // Popup previews
@@ -185,12 +185,13 @@ wfLoadExtension('EmbedVideo');
 
 // Load settings from env variables
 foreach ($_ENV as $env => $value) {
-	if (strpos($env, 'wg') === 0 && $value != '') {
-		$$env = $value;
-	}
+    if (strpos($env, 'wg') === 0 && $value != '') {
+        $$env = $value;
+    }
 }
 
-// Load settings from extra config file
-if (file_exists('./LocalSettings.override.php')) {
-	include_once('./LocalSettings.override.php');
+// Load extra config files
+$userLocalSettings = glob('./LocalSettings.*.php');
+foreach ($userLocalSettings as $file) {
+    include_once $file;
 }

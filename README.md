@@ -40,7 +40,7 @@ Any environment variable prefixed with `wg` (e.g. `wgSitename`) will be defined 
 docker run <image_name> -e wgDBpassword=secret
 ```
 
-Additionally, you can also add your own config file by mounting a `LocalSettings.override.php` file.
+Additionally, you can also add your own config by mounting any file matching the glob pattern `LocalSettings.*.php` into `/var/www/html`.
 
 ## First time install
 
