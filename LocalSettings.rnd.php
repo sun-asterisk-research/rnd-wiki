@@ -14,6 +14,10 @@ $wgLogoHD = [
 $wgFavicon = "$wgScriptPath/resources/assets/favicon.ico";
 $wgAppleTouchIcon = "$wgScriptPath/resources/assets/apple-touch-icon.png";
 
+// Timezone
+$wgLocaltimezone = 'Asia/Ho_Chi_Minh';
+
+
 // Session
 $wgSessionCacheType = CACHE_DB;
 $wgObjectCacheSessionExpiry = 30 * 86400;
