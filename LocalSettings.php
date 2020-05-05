@@ -1,12 +1,15 @@
 <?php
 
 // Protect against web entry
-if (!defined('MEDIAWIKI'))  {
+if (!defined('MEDIAWIKI')) {
     exit;
 }
 
-$wgSitename = 'Sun* R&D Wiki';
-$wgMetaNamespace = 'Sun*_R&D_Wiki';
+// Uncomment this to disable output compression
+// $wgDisableOutputCompression = true;
+
+$wgSitename = 'wiki';
+$wgMetaNamespace = 'Wiki';
 
 /**
  * The URL base path to the directory containing the wiki;
@@ -15,7 +18,7 @@ $wgMetaNamespace = 'Sun*_R&D_Wiki';
  * (like /w/index.php/Page_title to /wiki/Page_title) please see:
  * https://www.mediawiki.org/wiki/Manual:Short_URL
  */
-$wgScriptPath = '';
+$wgScriptPath = '/wiki';
 
 // The protocol and server name to use in fully-qualified URLs
 $wgServer = false;
@@ -25,13 +28,7 @@ $wgResourceBasePath = $wgScriptPath;
 
 // The URL path to the logo.  Make sure you change this from the default,
 // or else you'll overwrite your logo when you upgrade!
-$wgLogo = "$wgStylePath/resources/assets/wiki.png";
-$wgLogoHD = [
-    '2x' => "$wgStylePath/resources/assets/wiki_2x.png",
-];
-
-$wgFavicon = "$wgScriptPath/resources/assets/favicon.ico";
-$wgAppleTouchIcon = "$wgScriptPath/resources/assets/apple-touch-icon.png";
+$wgLogo = "$wgResourceBasePath/resources/assets/wiki.png";
 
 // UPO means: this is also a user preference option
 
@@ -49,32 +46,28 @@ $wgEmailAuthentication = true;
 // Database settings
 $wgDBtype = 'mysql';
 $wgDBserver = 'mysql';
-$wgDBname = 'sun_rnd_wiki';
-$wgDBuser = 'sun_rnd_wiki';
+$wgDBname = 'mediawiki';
+$wgDBuser = 'mediawiki';
 $wgDBpassword = 'secret';
 
 // MySQL specific settings
-$wgDBprefix = "";
+$wgDBprefix = '';
 
 // MySQL table options to use during installation or update
-$wgDBTableOptions = "ENGINE=InnoDB, DEFAULT CHARSET=binary";
+$wgDBTableOptions = 'ENGINE=InnoDB, DEFAULT CHARSET=binary';
 
 // Shared memory settings
 $wgMainCacheType = CACHE_ACCEL;
-$wgSessionCacheType = CACHE_DB;
-
-$wgObjectCacheSessionExpiry = 30 * 86400;
 
 $wgMemCachedServers = [];
-
-$wgDisableOutputCompression = false;
 
 /**
  * To enable image uploads, make sure the 'images' directory
  * is writable, then set this to true:
  */
-$wgEnableUploads = true;
+$wgEnableUploads = false;
 $wgUseImageMagick = true;
+$wgImageMagickConvertCommand = '/usr/bin/convert';
 
 // InstantCommons allows wiki to use images from https://commons.wikimedia.org
 $wgUseInstantCommons = false;
@@ -85,6 +78,13 @@ $wgUseInstantCommons = false;
  * with MediaWiki developers to help guide future development efforts.
  */
 $wgPingback = false;
+
+/*
+ * If you use ImageMagick (or any other shell command) on a
+ * Linux server, this will need to be set to the name of an
+ * available UTF-8 locale
+ */
+$wgShellLocale = 'C.UTF-8';
 
 /**
  * Set $wgCacheDirectory to a writable directory on the web server
@@ -99,7 +99,7 @@ $wgLanguageCode = 'en';
 $wgSecretKey = null;
 
 // Changing this will log out all existing sessions.
-$wgAuthenticationTokenVersion = "1";
+$wgAuthenticationTokenVersion = '1';
 
 // Site upgrade key. Must be set to a string (default provided) to turn on the
 // web installer while LocalSettings.php is in place
@@ -115,73 +115,17 @@ $wgRightsUrl = null;
 $wgRightsText = null;
 $wgRightsIcon = null;
 
-$wgWhitelistRead = [
-    'Special:CreateAccount',
-    'Special:UserLogin',
-    'Special:GoogleLoginReturn',
-];
-
-// Disable exception stack trace
-$wgShowExceptionDetails = false;
-
-// Permissions
-$wgGroupPermissions['*']['autocreateaccount'] = true;
-$wgGroupPermissions['sysop']['createaccount'] = true;
-
-$wgGroupPermissions['*']['read'] = false;
-$wgAuthManagerAutoConfig['primaryauth'] = [];
+// Path to the GNU diff3 utility. Used for conflict resolution.
+$wgDiff3 = '/usr/bin/diff3';
 
 // Default skin. Use the internal symbolic
 // names, ie 'vector', 'monobook':
-$wgDefaultSkin = "vector";
+$wgDefaultSkin = 'vector';
 
 // Enabled skins.
 wfLoadSkin('MonoBook');
 wfLoadSkin('Timeless');
 wfLoadSkin('Vector');
-
-//Enabled built-in extensions
-wfLoadExtension('CiteThisPage');
-wfLoadExtension('Renameuser');
-wfLoadExtension('MultimediaViewer');
-wfLoadExtension('TextExtracts');
-wfLoadExtension('PageImages');
-
-// GoogleLogin
-wfLoadExtension('GoogleLogin');
-
-$wgGLAppId = null;
-$wgGLSecret = null;
-
-$wgGroupPermissions['sysop']['Managegooglelogindomains'] = true ;
-$wgGLAuthoritativeMode = true;
-$wgGLAllowedDomains = ['sun-asterisk.com'];
-$wgGLAllowedDomainsStrict = true;
-
-// WikiEditor
-wfLoadExtension('WikiEditor');
-
-$wgHiddenPrefs[] = 'usebetatoolbar';
-
-// PagesList
-require_once "$IP/extensions/PagesList/PagesList.php";
-
-$wgPagesListShowLastUser = true;
-$wgPagesListShowLastModification = true;
-$wgPagesListDataTablesOptions = [
-    'iDisplayLength' => 20,
-];
-
-// Popup previews
-wfLoadExtension('Popups');
-
-$wgPopupsHideOptInOnPreferencesPage = true;
-$wgPopupsOptInDefaultState = '1';
-
-// More extensions
-wfLoadExtension('CommonsMetadata');
-wfLoadExtension('NewestPages');
-wfLoadExtension('EmbedVideo');
 
 // Load settings from env variables
 foreach ($_ENV as $env => $value) {

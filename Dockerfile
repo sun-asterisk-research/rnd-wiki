@@ -22,6 +22,7 @@ RUN wiki-ext-install https://extdist.wmflabs.org/dist/extensions/PagesList-REL1_
 
 COPY GoogleLogin/ extensions/GoogleLogin/
 COPY images/ resources/assets/
-COPY LocalSettings.php .
+COPY LocalSettings*.php ./
 
 ENV TZ=Asia/Ho_Chi_Minh
+ENV MW_INSTALL_PATH=/var/www/html
