@@ -1,4 +1,4 @@
-FROM mediawiki:1.33
+FROM mediawiki:1.34
 
 # zip & unzip for composer
 RUN apt-get update \
@@ -11,18 +11,14 @@ RUN curl -sSo /usr/local/bin/composer https://getcomposer.org/composer.phar && c
 COPY wiki-* /usr/local/bin/
 
 # Install extensions
-RUN wiki-ext-install https://extdist.wmflabs.org/dist/extensions/WikiEditor-REL1_33-e051a4b.tar.gz
-RUN wiki-ext-install https://extdist.wmflabs.org/dist/extensions/CommonsMetadata-REL1_33-46d720e.tar.gz
-RUN wiki-ext-install https://extdist.wmflabs.org/dist/extensions/Popups-REL1_33-07318c3.tar.gz
-RUN wiki-ext-install https://extdist.wmflabs.org/dist/extensions/MultimediaViewer-REL1_33-f07cc57.tar.gz
-RUN wiki-ext-install https://gitlab.com/hydrawiki/extensions/EmbedVideo/-/archive/v2.8.0/EmbedVideo-v2.8.0.tar.gz
-RUN wiki-ext-install https://extdist.wmflabs.org/dist/extensions/GoogleLogin-REL1_33-31ece02.tar.gz
-RUN wiki-ext-install https://extdist.wmflabs.org/dist/extensions/NewestPages-REL1_33-ddc318a.tar.gz
-RUN wiki-ext-install https://extdist.wmflabs.org/dist/extensions/PagesList-REL1_33-ed7b6f3.tar.gz
-
-# Already included in 1.34
-RUN wiki-ext-install https://extdist.wmflabs.org/dist/extensions/TextExtracts-REL1_33-2b04403.tar.gz
-RUN wiki-ext-install https://extdist.wmflabs.org/dist/extensions/PageImages-REL1_33-75000f5.tar.gz
+RUN wiki-ext-install https://extdist.wmflabs.org/dist/extensions/WikiEditor-REL1_34-57eb9ad.tar.gz
+RUN wiki-ext-install https://extdist.wmflabs.org/dist/extensions/CommonsMetadata-REL1_34-1b37909.tar.gz
+RUN wiki-ext-install https://extdist.wmflabs.org/dist/extensions/Popups-REL1_34-375d27b.tar.gz
+RUN wiki-ext-install https://extdist.wmflabs.org/dist/extensions/MultimediaViewer-REL1_34-30ea768.tar.gz
+RUN wiki-ext-install https://gitlab.com/hydrawiki/extensions/EmbedVideo/-/archive/master/EmbedVideo-master.tar.gz
+RUN wiki-ext-install https://extdist.wmflabs.org/dist/extensions/GoogleLogin-REL1_34-c395c86.tar.gz
+RUN wiki-ext-install https://extdist.wmflabs.org/dist/extensions/NewestPages-REL1_34-34467ae.tar.gz
+RUN wiki-ext-install https://extdist.wmflabs.org/dist/extensions/PagesList-REL1_34-08d363e.tar.gz
 
 COPY GoogleLogin/ extensions/GoogleLogin/
 COPY images/ resources/assets/
