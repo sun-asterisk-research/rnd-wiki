@@ -2,7 +2,7 @@
 
 mv LocalSettings.php LocalSettings.php.tmp
 
-php maintenance/install.php $@ \
+php maintenance/install.php "$@" \
     --dbtype ${wgDBtype:-mysql} \
     --dbserver ${wgDBserver:-mysql} \
     --dbname ${wgDBname:-sun_rnd_wiki} \
