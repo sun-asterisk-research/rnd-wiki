@@ -48,10 +48,12 @@ wfLoadExtension('GoogleLogin');
 $wgGLAppId = null;
 $wgGLSecret = null;
 
-$wgGroupPermissions['sysop']['Managegooglelogindomains'] = true ;
-$wgGLAuthoritativeMode = true;
 $wgGLAllowedDomains = ['sun-asterisk.com'];
 $wgGLAllowedDomainsStrict = true;
+$wgGLAuthoritativeMode = true;
+
+// Allow @ sign in usernames
+$wgInvalidUsernameCharacters = '#€';
 
 // WikiEditor
 wfLoadExtension('WikiEditor');
