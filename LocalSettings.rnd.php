@@ -77,3 +77,15 @@ wfLoadExtension('Popups');
 
 $wgPopupsHideOptInOnPreferencesPage = true;
 $wgPopupsOptInDefaultState = '1';
+
+// EventBus
+wfLoadExtension('EventBus');
+
+if (array_key_exists('EVENT_SERVICE_URL', $_ENV)) {
+    $wgEventServices = [
+        'eventbus' => [
+            'url' => $_ENV['EVENT_SERVICE_URL'],
+            'timeout' => 5,
+        ],
+    ];
+}

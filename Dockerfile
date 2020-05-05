@@ -19,6 +19,7 @@ RUN wiki-ext-install https://gitlab.com/hydrawiki/extensions/EmbedVideo/-/archiv
 RUN wiki-ext-install https://extdist.wmflabs.org/dist/extensions/GoogleLogin-REL1_34-c395c86.tar.gz
 RUN wiki-ext-install https://extdist.wmflabs.org/dist/extensions/NewestPages-REL1_34-34467ae.tar.gz
 RUN wiki-ext-install https://extdist.wmflabs.org/dist/extensions/PagesList-REL1_34-08d363e.tar.gz
+RUN wiki-ext-install https://extdist.wmflabs.org/dist/extensions/EventBus-REL1_34-b7afba7.tar.gz
 
 COPY GoogleLogin/ extensions/GoogleLogin/
 COPY images/ resources/assets/
