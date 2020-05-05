@@ -127,15 +127,15 @@ wfLoadSkin('MonoBook');
 wfLoadSkin('Timeless');
 wfLoadSkin('Vector');
 
+// Load extra config files
+$userLocalSettings = glob('./LocalSettings.*.php');
+foreach ($userLocalSettings as $file) {
+    include_once $file;
+}
+
 // Load settings from env variables
 foreach ($_ENV as $env => $value) {
     if (strpos($env, 'wg') === 0 && $value != '') {
         $$env = $value;
     }
-}
-
-// Load extra config files
-$userLocalSettings = glob('./LocalSettings.*.php');
-foreach ($userLocalSettings as $file) {
-    include_once $file;
 }
