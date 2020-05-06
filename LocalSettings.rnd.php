@@ -22,9 +22,6 @@ $wgLocaltimezone = 'Asia/Ho_Chi_Minh';
 $wgSessionCacheType = CACHE_DB;
 $wgObjectCacheSessionExpiry = 30 * 86400;
 
-// Turn on uploads
-$wgEnableUploads = false;
-
 // Pages without auth required
 $wgWhitelistRead = [
     'Special:CreateAccount',
